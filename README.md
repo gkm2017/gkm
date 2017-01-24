@@ -8,6 +8,7 @@
 1. 使用eclipse-ee版本进行导入即可
 2. tomcat使用7.0以上
 3. 修改数据库连接文件：https://github.com/gkm2017/gkm/blob/master/WebContent/WEB-INF/config/jdbc.properties
+
 ## 第三步：系统管理
 1. 首页：http://localhost:8080／gkm
 2. 管理面板：
