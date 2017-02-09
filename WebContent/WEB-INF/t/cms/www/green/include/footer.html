@@ -1,40 +1,61 @@
-<footer class="footer">
-  <div class="footer-link container">
-    <a style="margin-left:0;" href="http://www.jeecms.com">关于我们</a><a href="http://www.jeecms.com/lxwm.htm">联系我们</a><a href="http://www.jeecms.com/zhaopin.htm">诚聘英才</a><a href="http://www.jeecms.com/">友情链接</a><a href="http://bbs.jeecms.com/fabu/index.jhtml">程序下载</a><a href="http://www.jeecms.com/ad.htm">合作服务</a><a href="http://www.jeecms.com/xkxy.htm">许可协议</a><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)">加入收藏</a><a onclick="SetHome(window.location)" href="javascript:void(0)">设为首页</a><a href="http://v8.jeecms.com/jeeadmin/jeecms/index.do" target="_blank">管理登录</a>
-  </div>
-  <div class="copyright container"><p>电话：0791-86538070　13576281815     传真：0791-86538070     ICP备案号：赣ICP备13005266号     Powered by JeeCms Copyright © 2007-2015 www.jeecms.com, All Rights Reserved</p>
-   [#if site.config.flowSwitch]
-   	<p>
-  	浏览总量<span id="pv"></span> |  访客数总量 <span id="visitor"></span>|  
-  	今日浏览总量<span id="dayPv"></span>  |  今日访客数<span id="dayVisitor"></span>|  
-  	本周浏览总量<span id="weekPv"></span>  |  本周访客数<span id="weekVisitor"></span>| 
-  	本月浏览总量<span id="monthPv"></span>  |  本月访客数<span id="monthVisitor"></span>
-  	</p> 
-  [/#if]
-  </div>
-</footer>
-<script type="text/javascript" language="javascript">
-   //加入收藏
-       function AddFavorite(sURL, sTitle) {
-           sURL =encodeURI(sURL); 
-       try{   
-          window.external.addFavorite(sURL, sTitle);   
-       }catch(e) {   
-          try{   
-              window.sidebar.addPanel(sTitle, sURL, "");   
-           }catch (e){   
-              alert("您的浏览器不支持自动加入收藏功能，请使用Ctrl+D进行添加，或手动在浏览器里进行设置！");
-          }   
-       }
-   }
-   
-   //设为首页
-   function SetHome(url){
-       if (document.all) {
-          document.body.style.behavior='url(#default#homepage)';
-             document.body.setHomePage(url);
-       }else{
-           alert("您的浏览器不支持自动设置页面为首页功能，请您手动在浏览器里设置该页面为首页！");
-       }
-   }
-</script>
+<div id="footer" class="mar-t50">
+
+	<link rel="stylesheet" href="http://e.jikexueyuan.com/headerandfooter/css/footer.css?t=1483950493000">
+	<div class=" jkinfor-block">
+		<div class="jkinfor cf">
+			<div class="jk-logo">
+				<img src="http://e.jikexueyuan.com/headerandfooter/images/jk-logo-footer.png?t=1483950493000">
+				<p>极客学院，编程是一种信仰！</p>
+			</div>
+			<dl>
+				<dt>职业学院</dt>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/zhiye/web">Web前端工程师</a></dd>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/zhiye/python">Python Web工程师</a></dd>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/zhiye/go">Go语言工程师</a></dd>
+				<!--<dd><a target="_blank" href="http://j.jikexueyuan.com/train/android?huodong=jiuye_android_in">Android学院</a></dd>-->
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/zhiye/ios">iOS工程师</a></dd>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/zhiye/wechatapp">微信小程序工程师</a></dd>
+			</dl>
+			<dl>
+				<dt>会员课程</dt>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/course/">课程库</a></dd>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/path/">知识体系图</a></dd>
+				<dd><a target="_blank" href="http://ke.jikexueyuan.com/zhiye/">职业路径图</a></dd>
+				<dd><a target="_blank" href="http://ke.jikexueyuan.com/xilie/">系列课程</a></dd>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/tag/">课程标签</a></dd>
+			</dl>
+			<dl>
+				<dt>极客社区</dt>
+				<dd><a target="_blank" href="http://wenda.jikexueyuan.com/">技术问答</a></dd>
+				<dd><a target="_blank" href="http://wiki.jikexueyuan.com/">Wiki</a></dd>
+				<dd><a target="_blank" href="http://download.jikexueyuan.com/">资源下载</a></dd>
+				<dd><a target="_blank" href="http://qun.jikexueyuan.com/">社群</a></dd>
+			</dl>
+			<dl>
+				<dt>其他</dt>
+				<dd><a target="_blank" href="http://help.jikexueyuan.com/">关于我们</a></dd>
+				<dd><a target="_blank" href="http://help.jikexueyuan.com/join.html">加入我们</a></dd>
+				<dd><a target="_blank" href="http://j.jikexueyuan.com/evangelist/apply">讲师合作</a></dd>
+				<dd><a target="_blank" href="http://help.jikexueyuan.com/contact.html">联系我们</a></dd>
+				<dd><a target="_blank" href="http://www.jikexueyuan.com/friendlink.html">友情链接</a></dd>
+			</dl>
+
+			<div class="jk-down">
+				<p class="hot-tel">服务热线:400-678-8266</p>
+				<div class="downCon down-ios">
+					<img src="http://e.jikexueyuan.com/headerandfooter/images/app.png?t=1483950493000" class="twoCode" alt="下载二维码"> iPhone
+				</div>
+				<div class="downCon down-and">
+					<img src="http://e.jikexueyuan.com/headerandfooter/images/app.png?t=1483950493000" class="twoCode" alt="下载二维码"> Android
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="w-1000 copyright">
+		Copyright © 2013-2017&nbsp;<strong><a href="http://www.jikexueyuan.com/" target="_blank">jikexueyuan.com</a></strong> All Rights Reserved. 京ICP备11018032号-8 京公网安备11010802020210
+		<a href="http://qun.jikexueyuan.com/jikexueyuan/topic/430" target="_blank" class="down-wechat"></a>
+		<a href="http://weibo.com/jikexueyuan" target="_blank" class="down-sina"></a>
+		<a style="display:block; margin: 15px auto 0" id="___szfw_logo___" href="https://credit.szfw.org/CX20160908025320080267.html" target="_blank"><img src="http://icon.szfw.org/cert.png?t=1483950493000" width="60px" border="0"></a> <script type="text/javascript">(function(){document.getElementById('___szfw_logo___').oncontextmenu = function(){return false;}})();</script>
+	</div>
+</div>

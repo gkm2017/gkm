@@ -18,6 +18,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.jeecms.common.util.BCConvert;
+
 /**
  * HttpServletRequest帮助类
  */
@@ -43,6 +45,7 @@ public class RequestUtils {
 			return request.getParameter(name);
 		}
 		String s = request.getQueryString();
+		s=BCConvert.convertToBanJiao(s);
 		if (StringUtils.isBlank(s)) {
 			return null;
 		}

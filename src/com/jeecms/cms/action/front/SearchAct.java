@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.jeecms.cms.entity.assist.CmsSearchWords;
 import com.jeecms.cms.manager.assist.CmsSearchWordsMng;
 import com.jeecms.cms.service.SearchWordsCache;
+import com.jeecms.common.util.BCConvert;
 import com.jeecms.common.util.StrUtils;
 import com.jeecms.common.web.RequestUtils;
 import com.jeecms.common.web.ResponseUtils;
