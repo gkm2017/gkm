@@ -2,9 +2,9 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>首页 - ${site.name} - 用技术创造未来</title>
-<meta http-equiv="keywords" content="${site.keywords!}"/>
-<meta http-equiv="description" content="${site.description!}"/>
+<meta http-equiv="keywords" content="${channel.keywords!}"/>
+<meta http-equiv="description" content="${channel.description!}"/>
+<title>${channel.title!channel.name} - ${site.name}</title>
 <script type="text/javascript" src="/${res}/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/${res}/js/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="/${res}/css/bootstrap.min.css" />
@@ -15,31 +15,28 @@
 <!--[if lt IE 9]> 
 <script src="/${res}/js/html5shiv.min.js"></script>
 <script src="/${res}/js/respond.min.js"></script>
+
 <![endif]-->
 <script type="text/javascript">
 $(function() {
-	Cms.siteFlow("${base}", location.href, document.referrer, "${site.config.flowSwitch?string}");
-	$.cookie("_site_id_cookie","${site.id!}",{path: '${base}' });
+	Cms.channelViewCount("${base}","${channel.id}");
+	Cms.siteFlow("${base}", location.href, document.referrer,"${site.config.flowSwitch?string}");
 });
 </script>
 <head>
 <body>
-<section class="top">
-  <div class="red" style="width:100%;"></div>	
-</section>
+[#include "../include/top.html"/]
 [#include "../include/header.html"/]
-   [@cms_channel_list parentId=94]
-         [#list tag_list as c] 
 <div class="content">
 	<div class="idx-width" id="mfkc">
-            <h2 class="content-title"><em></em>${c.name}</h2>
+            <h2 class="content-title"><em></em>全部${channel.name}教程</h2>
             </div>
 </div>
 
-    <section class="jk-vip ">
+<section class="jk-vip" style="height:auto;overflow:hidden;">
    
-    <ul>
-        [@cms_channel_list parentId=c.id]
+    <ul >
+          [@cms_channel_list parentId=channel.id]
  [#list tag_list as c2]
         <li>
             <a href="${c2.url}">
@@ -59,7 +56,7 @@ $(function() {
         </li>
          [/#list] 
  [/@cms_channel_list]
-        <li>
+            <li>
             <a href="/path/ios">
                 <img src="http://s1.jikexueyuan.com/index/images/2_iOS_5e77ff4.png">
                 <p>iOS</p>
@@ -87,25 +84,39 @@ $(function() {
                 <span>90门课程</span>
             </a>
         </li>
-        <li>
-            <a href="/path/nodejs">
-                <img src="http://s1.jikexueyuan.com/index/images/6_js_c56bccc.png">
-                <p>Node.js</p>
-                <span>90门课程</span>
-            </a>
-        </li>
-        <li>
-            <a href="/path/c">
-                <img src="http://s1.jikexueyuan.com/index/images/7_c_07f10c0.png">
-                <p>C语言</p>
-                <span>17门课程</span>
-            </a>
-        </li>
-        <li>
+              <li>
             <a href="/path/java">
                 <img src="http://s1.jikexueyuan.com/index/images/8_java_89b7c2c.png">
                 <p>Java语言</p>
                 <span>17门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
             </a>
         </li>
         <li>
@@ -123,6 +134,34 @@ $(function() {
             </a>
         </li>
         <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
+            <a href="/path/php">
+                <img src="http://s1.jikexueyuan.com/index/images/9_php_d5fcdb8.png">
+                <p>PHP语言</p>
+                <span>23门课程</span>
+            </a>
+        </li>
+        <li>
             <a href="/path/python">
                 <img src="http://s1.jikexueyuan.com/index/images/11_Python_d253c3e.png">
                 <p>Python</p>
@@ -136,15 +175,42 @@ $(function() {
                 <span>89门课程</span>
             </a>
         </li>
+         <li>
+            <a href="/path/cocos2d-x">
+                <img src="http://s1.jikexueyuan.com/index/images/12_cocos2d_037cd04.png">
+                <p>Cocos2d-x游戏开发</p>
+                <span>89门课程</span>
+            </a>
+        </li>
+         <li>
+            <a href="/path/cocos2d-x">
+                <img src="http://s1.jikexueyuan.com/index/images/12_cocos2d_037cd04.png">
+                <p>Cocos2d-x游戏开发</p>
+                <span>89门课程</span>
+            </a>
+        </li>
+         <li>
+            <a href="/path/cocos2d-x">
+                <img src="http://s1.jikexueyuan.com/index/images/12_cocos2d_037cd04.png">
+                <p>Cocos2d-x游戏开发</p>
+                <span>89门课程</span>
+            </a>
+        </li>
+         <li>
+            <a href="/path/cocos2d-x">
+                <img src="http://s1.jikexueyuan.com/index/images/12_cocos2d_037cd04.png">
+                <p>Cocos2d-x游戏开发</p>
+                <span>899门课程</span>
+            </a>
+        </li>
     </ul>
    
    
-     <a class="vipAll" href="${c.url}">全部${c.name}</a>
+   
 </section>
- [/#list] 
-[/@cms_channel_list]
 
 [#include "../include/footer.html"/]
 [#include "../include/right-fixed.html"/]
+
 </body>
 </html>
