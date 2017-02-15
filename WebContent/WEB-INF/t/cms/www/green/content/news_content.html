@@ -3,8 +3,9 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="keywords" content="${channel.keywords!}"/>
-<meta http-equiv="description" content="${channel.description!}"/>
+<title>${title} - ${site.name} - Powered by JEECMS</title>
+<meta content="${content.tagStr!}" http-equiv="keywords" />
+<meta content="${content.description!}" http-equiv="description" />
 <title>${channel.title!channel.name} - ${site.name}</title>
 <script type="text/javascript" src="/${res}/js/jquery-3.1.1.min.js"></script>
 <script type="text/javascript" src="/${res}/js/bootstrap.min.js"></script>
@@ -19,9 +20,12 @@
 
 <![endif]-->
 <script type="text/javascript">
-$(function() {
-	Cms.channelViewCount("${base}","${channel.id}");
-	Cms.siteFlow("${base}", location.href, document.referrer,"${site.config.flowSwitch?string}");
+$(function() {alert(1);
+Cms.checkPerm("${base}","${content.id}");
+Cms.collectCsi("${base}","collectCsiDiv","collect_csi","${content.id}");
+Cms.attachment("${base}","${content.id}","${content.attachments?size}","attach");
+Cms.viewCount("${base}","${content.id}");
+Cms.siteFlow("${base}", location.href, document.referrer,"${site.config.flowSwitch?string}");
 });
 </script>
 <head>
@@ -37,7 +41,7 @@ $(function() {
 <div id="hbox-left">
 	<div id="sidebar-box">
 		<div class="design" id="leftcolumn" style="border:1px solid rgba(0,0,0,.2);">
-[@cms_channel_list parentId=channel.id]
+[@cms_channel_list parentId=channel.parent.id]
 	[#list tag_list as c] 
 	[#if c_index == 0]
       [#assign default_list_id = "${c.id}" /]
@@ -45,7 +49,13 @@ $(function() {
 	<div id="tittle">${c.name}</div>
 		[@cms_content_list   orderBy='4' channelId=c.id channelOption='0']
   			[#list tag_list as a]
- 				<a target="_self" title="[@text_cut s=a.title len=25 append=apend/]" href="${a.url}">[@text_cut s=a.title len=25 append=apend/]</a>
+  			[#if a.id==content.id]
+  			<a target="_self" title="[@text_cut s=a.title len=25 append=apend/]" href="${a.url}" style="background-color: rgb(150, 185, 125); font-weight: bold; color: rgb(255, 255, 255);">[@text_cut s=a.title len=25 append=apend/]</a>
+  			
+  			[#else]
+  			<a target="_self" title="[@text_cut s=a.title len=25 append=apend/]" href="${a.url}">[@text_cut s=a.title len=25 append=apend/]</a>
+  			[/#if]
+ 				
 	 		[/#list]
    		[/@cms_content_list]
  	[/#list] 
@@ -57,28 +67,35 @@ $(function() {
 		
 	
 	<div id="article">
-					     [@cms_content_list  count='1' orderBy='4' channelId='${default_list_id}' channelOption='0' dateFormat='yyyy-MM-dd']
-     [#list tag_list as a]
-     [#assign default_content_id = "${a.id}" /]
+		
 		<div id="previous-next-links">
-			<div id="previous-design-link" >上一篇：[@cms_content id=default_content_id next='1' channelId=default_list_id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content] </div>
-			<div id="next-design-link">下一篇：[@cms_content id=default_content_id next='0' channelId=default_list_id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content]</div>
+			<div id="previous-design-link">上一篇：[@cms_content id=content.id next='1' channelId=channel.id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content]</div>
+			<div id="next-design-link">下一篇：[@cms_content id=content.id next='0' channelId=channel.id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content]</div>
 		</div>
 		<div id="article-body">
 		
 			<div  id="content">
-
-  			${a.txt!}
-          
+			 ${txt!}
+			 
+     <!--  
+			     [@cms_content_list  count='1' orderBy='4' channelId='${default_list_id}' channelOption='0' dateFormat='yyyy-MM-dd']
+     [#list tag_list as a]
+        <div class="item">
+          <h1><a href="${a.url}" target="_blank">[@text_cut s=a.title len=17 append='...'/]</a></h1>
+          <div class="des">[@text_cut s=a.description! len=72 append='...'/]</div>
+          <span>${a.ctgName}<em>${a.date?string(dateFormat)}</em></span>
+        </div>
+      
+        ${a.txt!}
      [/#list]
    [/@cms_content_list]
-  
+   -->
 </div>
 		</div>
 		
 		<div id="previous-next-links">
-			<div id="previous-design-link" >上一篇：[@cms_content id=default_content_id next='1' channelId=default_list_id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content] </div>
-			<div id="next-design-link">下一篇：[@cms_content id=default_content_id next='0' channelId=default_list_id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content]</div>
+			<div id="previous-design-link">上一篇：[@cms_content id=content.id next='1' channelId=channel.id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content]</div>
+			<div id="next-design-link">下一篇：[@cms_content id=content.id next='0' channelId=channel.id][#if tag_bean??]<a href="${tag_bean.url}">[@text_cut s=tag_bean.title len=21 append='...'/]</a>[#else]没有了[/#if][/@cms_content]</div>
 		</div>
 		
 </div>
