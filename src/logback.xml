@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+
+	<property name="Log_Home" value="${CATALINA_HOME:-/tmp/v8flogback}/logs"/>
+
+
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>%d{HH:mm:ss.SSS} %-5level %logger{80} - %msg%n</Pattern>
 		</encoder>
 	</appender>
 	<appender name="fileAppender" class="ch.qos.logback.core.FileAppender">  
-	    <file>/Users/zhengnanyang/logs/v8flogback.log</file>  
+	    <file>${Log_Home}/v8flogback.log</file>
 	    <encoder><!-- 必须指定，否则不会往文件输出内容 -->  
 	        <pattern>%d{HH:mm:ss.SSS} %-5level %logger{80} - %msg%n</pattern>  
 	    </encoder>  
